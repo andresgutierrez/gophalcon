@@ -3,6 +3,13 @@ Phalcon Go Framework
 
 Phalcon GO is a web for the GO language providing high performance and lower resource consumption.
 
+How to install?
+-------
+To get Phalcon Go Framework, run this in your terminal:
+
+go get github.com/andresgutierrez/gophalcon
+
+
 Example
 -------
 
@@ -10,7 +17,7 @@ Example
 
 package main
 
-import p "phalcon"
+import p "github.com/andresgutierrez/gophalcon/"
 
 func main() {
 
