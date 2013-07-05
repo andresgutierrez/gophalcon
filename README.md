@@ -1,13 +1,13 @@
-Phalcon Go Framework
+Gooky Framework
 ====================
 
-Phalcon GO is a web for the GO language providing high performance and lower resource consumption.
+Gooky is a web framework for GO language providing high performance and lower resource consumption.
 
 How to install?
 -------
-To get Phalcon Go Framework, run this in your terminal:
+To get Gooky Framework, run this in your terminal:
 
-go get github.com/andresgutierrez/gophalcon
+go get github.com/gooky/gooky
 
 
 Example
@@ -17,23 +17,23 @@ Example
 
 package main
 
-import p "github.com/andresgutierrez/gophalcon/"
+import g "github.com/gooky/gooky"
 
 func main() {
 
-    app := &p.Micro {}
+    app := &g.Micro {}
 
     // Add handler to server's map.
-    app.Map("/", func(c *p.AppContext) {
+    app.Map("/", func(c *g.AppContext) {
         c.GetResponse().SetContent("<h1>Welcome!</H1>!!")
     })
 
     // Add handler to server's map.
-    app.Map("/hello", func(c *p.AppContext) {
+    app.Map("/hello", func(c *g.AppContext) {
         c.GetResponse().SetContent("<h1>Hello</H1>!!")
     })
 
-    app.Map("/say/{name}/{surname}", func(c *p.AppContext) {
+    app.Map("/say/{name}/{surname}", func(c *g.AppContext) {
         c.GetResponse().SetContent("<h1>Hi " + c.GetParam("name") + ", " + c.GetParam("surname") + "!!</h1>")
     })
 
@@ -44,4 +44,4 @@ func main() {
 
 License
 -------
-Phalcon is open-sourced software licensed under the New BSD License. See the docs/LICENSE.txt file for more information.
+Gooky Framework is open-sourced software licensed under the New BSD License. See the docs/LICENSE.txt file for more information.
