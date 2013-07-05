@@ -2,6 +2,8 @@ package phalcon
 
 import "fmt"
 import "net/http"
+import "os"
+import "bufio"
 
 type Micro struct {
     di *DI
@@ -35,11 +37,40 @@ func (this *Micro) ServeHTTP(httpWriter http.ResponseWriter, httpRequest *http.R
 
     this.httpWriter = httpWriter
 
-    fmt.Println(httpRequest.URL.Path)
+    uri := httpRequest.URL.Path
+    fmt.Println(uri)
 
+    //Check if the file exists
+    fi, err := os.Stat("public" + uri)
+    if err == nil {
+        if !fi.IsDir() {
+
+            var (
+                file *os.File
+                part []byte
+                prefix bool
+            )
+
+            if file, err = os.Open("public" + uri); err != nil {
+                return
+            }
+
+            reader := bufio.NewReader(file)
+            for {
+                if part, prefix, err = reader.ReadLine(); err != nil {
+                    break
+                }
+                fmt.Println(prefix)
+                httpWriter.Write(part)
+            }
+            return
+        }
+    }
+
+    //Try match a route
     router := this.GetDI().GetRouter()
 
-    match := router.Handle(httpRequest.URL.Path)
+    match := router.Handle(uri)
 
     if (match.WasMatched()) {
 
@@ -68,4 +99,3 @@ func (this *Micro) ServeHTTP(httpWriter http.ResponseWriter, httpRequest *http.R
 func (this *Micro) Handle() {
     http.ListenAndServe(":3030", this)
 }
-

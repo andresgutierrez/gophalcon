@@ -18,22 +18,22 @@ func main() {
 
     // Add handler to server's map.
     app.Map("/", func(c *p.AppContext) {
-        c.GetResponse().SetContent("<h1>Hello</H1>!!")
+        c.GetResponse().SetContent("<h1>Welcome!</H1>!!")
     })
 
     // Add handler to server's map.
     app.Map("/hello", func(c *p.AppContext) {
-        c.GetResponse().SetContent("<h1>Burning 1</H1>!!")
+        c.GetResponse().SetContent("<h1>Hello</H1>!!")
     })
 
     app.Map("/say/{name}/{surname}", func(c *p.AppContext) {
-        c.GetResponse().SetContent("<h1>" + c.GetParam("name") + " " + c.GetParam("surname") + "</H1>!!")
+        c.GetResponse().SetContent("<h1>Hi " + c.GetParam("name") + ", " + c.GetParam("surname") + "!!</h1>")
     })
 
     app.Handle()
 }
 
-``
+```
 
 License
 -------
