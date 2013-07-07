@@ -1,4 +1,4 @@
-package phalcon
+package gooky
 
 type Response struct {
     content string

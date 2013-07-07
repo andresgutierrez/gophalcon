@@ -1,5 +1,4 @@
-
-package phalcon
+package gooky
 
 import (
 	"strings"

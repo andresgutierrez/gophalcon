@@ -1,4 +1,4 @@
-package phalcon
+package gooky
 
 import "fmt"
 import "net/http"
